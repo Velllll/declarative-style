@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]="filterGroup" action="">
+        <div class="input add">
+            <input type="text" formControlName="addUser" type="text" placeholder="Add new user">
+            <button (click)="addNewUser()">Add new User</button>
+        </div>
+        <div class="input search">
+            <input formControlName="search" type="text" placeholder="Search...">
+        </div>
+        <div class="input select">
+            Select only: 
+            <select name="users" formControlName="status">
+                <option value="all">all users</option>
+                <option value="1">status 1</option>
+                <option value="2">status 2</option>
+                <option value="3">status 3</option>
+            </select>
+        </div>
+    </form>
+    <div class="users" *ngIf="filtredUsers$ | async as users">
+        <div class="user" *ngFor="let user of users">
+            User name: {{user.name}};
+            <br> 
+            Status: {{user.status}}
+        </div>
+    </div>
+</div>
