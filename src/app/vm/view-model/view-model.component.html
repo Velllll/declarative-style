@@ -1,0 +1,14 @@
+<div class="users" *ngIf="vm$ | async as vm; else loading">
+    <ng-container *ngIf="vm.users; else loading">
+        <div class="user" *ngFor="let user of vm.users">User name: {{user.name}}</div>
+    </ng-container>
+    <ng-container *ngIf="vm.imgs; else loading">
+        <div class="img" *ngFor="let img of vm.imgs">www.{{img.url}}.com</div>
+    </ng-container>
+</div>
+
+<ng-template #loading>
+    <div class="loading">
+        Loading...
+    </div>
+</ng-template>
